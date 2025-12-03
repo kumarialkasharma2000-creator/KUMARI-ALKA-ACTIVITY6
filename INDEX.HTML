@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SunnyTrips Travel Agency</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <h1>SunnyTrips</h1>
+      <p>Your next adventure starts here</p>
+    </div>
+    <nav class="main-nav">
+      <a href="#packages">Packages</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#tips">Travel Tips</a>
+      <a href="#booking">Book</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h2>Explore handpicked tour packages</h2>
+      <p>Affordable packages, easy booking and helpful travel tips for beginners.</p>
+      <a class="btn" href="#packages">See Packages</a>
+    </section>
+
+    <!-- PACKAGES -->
+    <section id="packages" class="section">
+      <h3>Popular Packages</h3>
+
+      <div class="cards">
+        <div class="card">
+          <h4>Beach Escape — 4 days</h4>
+          <p class="price">₹8,999</p>
+          <p>Relax on sandy beaches with inclusive hotel and breakfast.</p>
+          <button onclick="prefillBooking('Beach Escape', 8999)">Book Now</button>
+        </div>
+
+        <div class="card">
+          <h4>Mountain Trek — 5 days</h4>
+          <p class="price">₹12,500</p>
+          <p>Guided treks, camping & local meals. For beginner-friendly trails.</p>
+          <button onclick="prefillBooking('Mountain Trek', 12500)">Book Now</button>
+        </div>
+
+        <div class="card">
+          <h4>City Tour — 3 days</h4>
+          <p class="price">₹6,499</p>
+          <p>City sightseeing, museum visits and local food tours.</p>
+          <button onclick="prefillBooking('City Tour', 6499)">Book Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+      <h3>Gallery — Destinations</h3>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="beach">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80" alt="mountain">
+        <img src="https://images.unsplash.com/photo-1455763916899-e8b50eca9967?w=800&q=80" alt="city">
+      </div>
+    </section>
+
+    <!-- TRAVEL TIPS -->
+    <section id="tips" class="section">
+      <h3>Travel Tips</h3>
+      <ul class="tips">
+        <li>Pack light and bring comfortable shoes.</li>
+        <li>Always carry a basic first-aid kit and copies of important documents.</li>
+        <li>Book refundable options when you are not sure about dates.</li>
+      </ul>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="booking" class="section booking">
+      <h3>Booking Form (demo)</h3>
+      <p class="note">This is a front-end demo — form does not send anywhere.</p>
+
+      <form id="bookForm" onsubmit="submitBooking(event)">
+        <label for="pkg">Package</label>
+        <input id="pkg" name="package" type="text" placeholder="Select a package" required>
+
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" placeholder="Full name" required>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+        <label for="date">Travel date</label>
+        <input id="date" name="date" type="date" required>
+
+        <label for="people">Passengers</label>
+        <input id="people" name="people" type="number" min="1" value="1" required>
+
+        <button class="btn" type="submit">Confirm Booking</button>
+      </form>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <h3>Contact Us</h3>
+      <p>Email: info@sunnytrips.example • Phone: +91 98765 43210</p>
+      <p>Address: 12 Travel Lane, Your City</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 SunnyTrips • Designed for beginners</p>
+  </footer>
+
+  <script>
+    // tiny front-end helpers
+    function prefillBooking(pkgName, price) {
+      document.getElementById('pkg').value = pkgName + ' — ₹' + price;
+      window.location.hash = '#booking';
+      document.getElementById('name').focus();
+    }
+
+    function submitBooking(e) {
+      e.preventDefault();
+      const pkg = document.getElementById('pkg').value;
+      const name = document.getElementById('name').value;
+      const date = document.getElementById('date').value;
+      if (!pkg || !name || !date) {
+        alert('Please complete all required fields.');
+        return;
+      }
+      // demo confirmation (no server)
+      alert('Thank you, ' + name + '!\\nYour booking for ' + pkg + ' on ' + date + ' is noted (demo).');
+      document.getElementById('bookForm').reset();
+    }
+  </script>
+
+</body>
+</html>
